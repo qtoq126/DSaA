@@ -1,0 +1,13 @@
+F:\DataStructure\bin\Debug\netcoreapp2.1\DataStructure.deps.json
+F:\DataStructure\bin\Debug\netcoreapp2.1\DataStructure.runtimeconfig.json
+F:\DataStructure\bin\Debug\netcoreapp2.1\DataStructure.runtimeconfig.dev.json
+F:\DataStructure\bin\Debug\netcoreapp2.1\DataStructure.dll
+F:\DataStructure\bin\Debug\netcoreapp2.1\DataStructure.pdb
+F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.csproj.CoreCompileInputs.cache
+F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.AssemblyInfoInputs.cache
+F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.AssemblyInfo.cs
+F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.dll
+F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.pdb
+F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.csproj.AssemblyReference.cache
+F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.GeneratedMSBuildEditorConfig.editorconfig
+F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.genruntimeconfig.cache
