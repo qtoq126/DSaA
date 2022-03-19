@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataStructure.Chapter1.Week4;
+using System;
+using static DataStructure.Leetcode.RemoveElements;
 
 namespace DataStructure
 {
@@ -6,43 +8,27 @@ namespace DataStructure
     {
         static void Main(string[] args)
         {
-            // Array<int> arr = new Array<int>();
-            // for (int i = 0; i < 10; i++)
-            // {
-            //     arr.AddLast(i);
-            // }
-            // Console.WriteLine(arr);
+            //var linkedList = new LinkedListWithDummyHead<int>();
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    linkedList.AddFirst(i);
+            //    Console.WriteLine(linkedList);
+            //}
+            //linkedList.Add(2, 666);
+            //Console.WriteLine(linkedList);
 
-            // arr.Add(1, 100);
-            // Console.WriteLine(arr);
+            //linkedList.Remove(2);
+            //Console.WriteLine(linkedList);
 
-            // arr.AddFirst(-1);
-            // Console.WriteLine(arr);
+            //linkedList.RemoveFirst();
+            //Console.WriteLine(linkedList);
 
-            //Console.ReadLine();
+            //linkedList.RemoveLast();
+            //Console.WriteLine(linkedList);
 
-            // LoopQueue<int> queue = new LoopQueue<int>();
-            // for (int i = 0; i < 10; i++)
-            // { 
-            //     queue.Enqueue(i);
-            //     Console.WriteLine(queue); 
-            //     if (i % 3 == 2)
-            //     {
-            //         queue.Dequeue();
-            //         Console.WriteLine(queue);
-            //     }
-            // }
-            // Solution s = new Solution();
-            // s.IsValid("{()}");
-            int opCount = 100000;
-
-            ArrayQueue<int> arrayQueue = new ArrayQueue<int>();
-            double time1 = testQueue(arrayQueue, opCount);
-            Console.WriteLine("ArraryQueue, time: " + time1 + "ms");
-
-            LoopQueue<int> loopQueue = new LoopQueue<int>();
-            double time2 = testQueue(loopQueue, opCount);
-            Console.WriteLine("LoopQueue, time: " + time2 + "ms");
+            int[] nums = { 1, 2, 5, 6, 7, 8, 9, 3 };
+            var head = new ListNode(nums);
+            Console.WriteLine(head);
         }
 
         //测试使用q运行opCount个进队和出队操作所需要的时间，单位：秒

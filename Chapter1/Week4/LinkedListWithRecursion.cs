@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataStructure.Chapter1.Week4
 {
-    public class LinkedList<T> 
+    public class LinkedListWithRecursion<T> 
     {
         private class Node
         {
@@ -38,7 +38,7 @@ namespace DataStructure.Chapter1.Week4
         private Node head;
         private int size;
 
-        public LinkedList()
+        public LinkedListWithRecursion()
         {
             this.head = null;
             size = 0;
