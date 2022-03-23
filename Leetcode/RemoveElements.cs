@@ -5,7 +5,7 @@ using System.Text;
 namespace DataStructure.Leetcode
 {
     /// <summary>
-    /// Leetcode 203
+    /// Leetcode 203 移除链表中所有与e重复的元素
     /// </summary>
     public class RemoveElements
     {
@@ -62,6 +62,16 @@ namespace DataStructure.Leetcode
                 prev = prev.next;
             }
             return dummyHead.next;
+        }
+
+        public static ListNode RemoveElementsByRecursion(ListNode head, int val)
+        {
+            if (head == null)
+            {
+                return head;
+            }
+            head.next = RemoveElementsByRecursion(head.next, val);
+            return head.val == val ? head.next : head;
         }
     }
 }

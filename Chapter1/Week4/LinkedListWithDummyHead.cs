@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DataStructure.Chapter1.Week4
 {
+    /// <summary>
+    /// 采用虚拟头节点的链表
+    /// </summary>
     public class LinkedListWithDummyHead<T> where T: IEquatable<T>
     {
         private class Node
@@ -172,7 +175,7 @@ namespace DataStructure.Chapter1.Week4
             Node cur = dummyHead.next;
             while (cur != null)
             {
-                sb.Append(cur.element + "->");
+                sb.Append(cur + "->");
                 cur = cur.next;
             }
             sb.Append("NULL");
