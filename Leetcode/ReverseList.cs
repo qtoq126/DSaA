@@ -5,7 +5,7 @@ using System.Text;
 namespace DataStructure.Leetcode
 {
     /// <summary>
-    /// Leetcode 206 翻转链表
+    /// Leetcode 206：翻转链表
     /// </summary>
     public class ReverseList
     {

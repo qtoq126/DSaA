@@ -8,6 +8,6 @@ F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.AssemblyInfoInputs.cache
 F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.AssemblyInfo.cs
 F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.dll
 F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.pdb
-F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.csproj.AssemblyReference.cache
 F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.GeneratedMSBuildEditorConfig.editorconfig
 F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.genruntimeconfig.cache
+F:\DataStructure\obj\Debug\netcoreapp2.1\DataStructure.csproj.AssemblyReference.cache

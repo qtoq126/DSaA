@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DataStructure": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

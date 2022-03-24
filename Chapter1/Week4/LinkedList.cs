@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DataStructure.Chapter1.Week4
 {
+    /// <summary>
+    /// 普通链表
+    /// </summary>
     public class LinkedList<T> 
     {
         private class Node
