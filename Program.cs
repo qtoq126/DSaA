@@ -5,6 +5,7 @@ using DataStructure.Chapter2.Week6;
 using DataStructure.Leetcode;
 using DataStructure.Test;
 using System;
+using System.Linq;
 using static DataStructure.Leetcode.ReverseList;
 
 namespace DataStructure
@@ -13,18 +14,20 @@ namespace DataStructure
     {
         static void Main(string[] args)
         {
-            //int[] arr = { 72, 93, 40, 76, 35 };
+            int[] arr = {0,0,2,3,2,1,1,2,0,4};
+            arr.Skip(0).Take(10).ToArray();
+            //QuickSort.Partition3(arr, 0, arr.Length - 1, new Random());
+            var objectK = new SelectK();
+            var ret = objectK.GetLeastNumbers(arr, 2);
 
+            Console.WriteLine(string.Join(",", arr));
 
-            var arr1 = ArrayTestHelper.GeneratorArray(100000, 100000);
-            var arr2 = (int[])arr1.Clone();
-
-            ArrayTestHelper.SortTest("MergeSort", arr1);
-            ArrayTestHelper.SortTest("QuickSort", arr2);
+            //ArrayTestHelper.SortTest("QuickSort", ref arr1);
+            //ArrayTestHelper.SortTest("QuickSort1", ref arr1);
 
             //Console.WriteLine(arr1[0]);
 
-
+            //DateTime startTime = System.DateTime.Now;
 
             //QuickSort.Partition(ref arr1, 0, arr1.Length - 1);
 
@@ -34,7 +37,6 @@ namespace DataStructure
 
             //var ts = afterDT.Subtract(startTime);
             //Console.WriteLine($"bobo: n={arr1.Length}, 总耗时={ts.TotalSeconds}s.");
-            //Console.WriteLine(string.Join(",", arr1));
 
 
 
@@ -43,16 +45,12 @@ namespace DataStructure
 
             //QuickSort.Partition2(ref arr2, 0, arr2.Length - 1);
 
-            // afterDT = System.DateTime.Now;
+            //afterDT = System.DateTime.Now;
 
             ////Console.WriteLine(string.Join(",", arr));
 
-            // ts = afterDT.Subtract(startTime);
+            //ts = afterDT.Subtract(startTime);
             //Console.WriteLine($"myself: n={arr2.Length}, 总耗时={ts.TotalSeconds}s.");
-            //Console.WriteLine(string.Join(",", arr2));
-
-
-
 
             //var listNode = new ListNode(nums);
             //var obj = new ReverseList();

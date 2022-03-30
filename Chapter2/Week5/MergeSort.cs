@@ -12,7 +12,7 @@ namespace DataStructure.Chapter2.Week5
     /// 3. MergeSort(arr[], l, mid): 对左侧一半进行归并排序
     /// 4. MergeSort(arr[], mid + 1, r)：对右侧一半进行归并排序
     /// 5. Merge(arr[], l, mid, r): 合并（将两个有序数组合并成一个有序数组）
-    /// 6. nlog(n)：递归树（有log2^n层，每一次是O(n)）
+    /// 6. O(nlogn)：递归树（有log2^n层，每一次是O(n)）
     /// 适合大数据规模，规模越大，优势越大
     /// </summary>
     public class MergeSort
@@ -24,9 +24,9 @@ namespace DataStructure.Chapter2.Week5
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="arr"></param>
-        public static void Sort<T>(ref T[] arr) where T: IComparable
+        public static void Sort<T>(T[] arr) where T: IComparable
         {
-            MergeSort_(ref arr, 0, arr.Length - 1);
+            MergeSort_(arr, 0, arr.Length - 1);
         }
 
         /// <summary>
@@ -35,22 +35,22 @@ namespace DataStructure.Chapter2.Week5
         /// <typeparam name="T"></typeparam>
         /// <param name="arr"></param>
         /// <returns></returns>
-        public static int InversePairs<T>(ref T[] arr) where T : IComparable
+        public static int InversePairs<T>(T[] arr) where T : IComparable
         {
-            MergeSort_(ref arr, 0, arr.Length - 1);
+            MergeSort_(arr, 0, arr.Length - 1);
             return res;
         }
 
-        private static void MergeSort_<T>(ref T[] arr, int lhs, int rhs) where T : IComparable
+        private static void MergeSort_<T>(T[] arr, int lhs, int rhs) where T : IComparable
         {
             if (lhs >= rhs)
             {
                 return;
             }
             int mid = (lhs + rhs) / 2; // 可能会越界溢出 mid = lhs + (rhs - lhs) / 2
-            MergeSort_(ref arr, lhs, mid);
-            MergeSort_(ref arr, mid + 1, rhs);
-            Merge(ref arr, lhs, mid, rhs);
+            MergeSort_(arr, lhs, mid);
+            MergeSort_(arr, mid + 1, rhs);
+            Merge(arr, lhs, mid, rhs);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace DataStructure.Chapter2.Week5
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="arr"></param>
-        public static void SortBU<T>(ref T[] arr) where T : IComparable
+        public static void SortBU<T>(T[] arr) where T : IComparable
         {
             int n = arr.Length;
             // 遍历合并的区间长度
@@ -67,12 +67,12 @@ namespace DataStructure.Chapter2.Week5
                 // 遍历合并的两个区间的起始位置[i, i+sz) 和 [i+sz, i+sz+sz)
                 for (int i = 0; i + sz < n; i += sz + sz)
                 {
-                    Merge(ref arr, i, i + sz - 1, Math.Min(i + sz + sz - 1, n - 1));
+                    Merge(arr, i, i + sz - 1, Math.Min(i + sz + sz - 1, n - 1));
                 }
             }
         }
 
-        private static void Merge<T>(ref T[] arr, int lhs, int mid, int rhs) where T : IComparable
+        private static void Merge<T>(T[] arr, int lhs, int mid, int rhs) where T : IComparable
         {
             if (arr[mid].CompareTo(arr[mid + 1]) < 0 ) // 左半数组都比右半数组小，整个数组已有序
             {

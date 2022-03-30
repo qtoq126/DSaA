@@ -7,12 +7,12 @@ namespace DataStructure.Chapter1.Week2
 {
     /// <summary>
     /// 选择排序法
-    /// 每一次找到数组中最小的那一个元素
+    /// 算法逻辑：每一次找到数组中最小的那一个元素
     /// O(n^2)
     /// </summary>
     public class SelectionSort
     {
-        public static void Sort<T>(ref T[] arr) where T: IComparable
+        public static void Sort<T>(T[] arr) where T: IComparable
         {
             int minIndex;
             for (int i = 0; i < arr.Length; i++)

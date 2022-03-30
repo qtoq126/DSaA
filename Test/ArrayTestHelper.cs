@@ -50,23 +50,27 @@ namespace DataStructure.Test
 
             if (sortName == "SelectionSort")
             {
-                SelectionSort.Sort(ref arr);
+                SelectionSort.Sort(arr);
             }
             else if (sortName == "InsertSort")
             {
-                InsertSort.Sort(ref arr);
+                InsertSort.Sort(arr);
             }
             else if (sortName == "MergeSort")
             {
-                MergeSort.Sort(ref arr);
+                MergeSort.Sort(arr);
             }
             else if (sortName == "MergeSortBU")
             {
-                MergeSort.SortBU(ref arr);
+                MergeSort.SortBU(arr);
             }
             else if (sortName == "QuickSort")
             {
-                QuickSort.Sort(ref arr);
+                QuickSort.Sort(arr);
+            }
+            else if (sortName == "QuickSort1")
+            {
+                QuickSort.Sort1(arr);
             }
 
             if (!IsSorted(arr))
