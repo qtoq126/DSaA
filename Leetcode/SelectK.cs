@@ -15,9 +15,6 @@ namespace DataStructure.Leetcode
         /// <summary>
         /// 数组中的第 K 个最大元素
         /// </summary>
-        /// <param name="nums"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
         public int FindKthLargest(int[] nums, int k)
         {
             return SelectK_(nums, 0, nums.Length - 1, nums.Length - k, new Random());
@@ -26,9 +23,6 @@ namespace DataStructure.Leetcode
         /// <summary>
         /// 找出数组中最小的 K 个数
         /// </summary>
-        /// <param name="arr"></param>
-        /// <param name="k"></param>
-        /// <returns></returns>
         public int[] GetLeastNumbers(int[] arr, int k)
         {
             if (k == 0)
@@ -42,12 +36,6 @@ namespace DataStructure.Leetcode
         /// <summary>
         /// 找到第k个最小的元素的索引
         /// </summary>
-        /// <param name="nums"></param>
-        /// <param name="lhs"></param>
-        /// <param name="rhs"></param>
-        /// <param name="k"></param>
-        /// <param name="r"></param>
-        /// <returns></returns>
         private int SelectK_(int[] nums, int lhs, int rhs, int k, Random r)
         {
             int p = Partition(nums, lhs, rhs, r);
@@ -60,6 +48,32 @@ namespace DataStructure.Leetcode
                 return SelectK_(nums, lhs, p - 1, k, r);
             }
             return SelectK_(nums, p + 1, rhs, k, r);
+        }
+
+        /// <summary>
+        /// 找到第k个最小的元素的索引(非递归)
+        /// </summary>
+        private int SelectK_N(int[] nums, int k, Random random)
+        {
+            int l = 0;
+            int r = nums.Length - 1;
+            while (l >= r)
+            {
+                int p = Partition(nums, l, r, random);
+                if (p == k)
+                {
+                    return p;
+                }
+                if (k < p)
+                {
+                    r = p - 1;
+                }
+                else
+                {
+                    l = p + 1;
+                }
+            }
+            throw new Exception("No Solution");
         }
 
         private int Partition(int[] nums, int lhs, int rhs, Random r)
@@ -95,9 +109,6 @@ namespace DataStructure.Leetcode
         /// <summary>
         /// 换位
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
         private static void Swap<T>(ref T a, ref T b)
         {
             T t = a;

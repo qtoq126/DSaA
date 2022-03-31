@@ -38,9 +38,6 @@ namespace DataStructure.Leetcode
         /// <summary>
         /// 换位
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
         private static void Swap<T>(ref T a, ref T b)
         {
             T t = a;

@@ -1,12 +1,9 @@
-﻿using DataStructure.Chapter1.Week2;
-using DataStructure.Chapter1.Week4;
-using DataStructure.Chapter2.Week5;
-using DataStructure.Chapter2.Week6;
+﻿using DataStructure.Chapter1;
+using DataStructure.Chapter2;
 using DataStructure.Leetcode;
 using DataStructure.Test;
 using System;
 using System.Linq;
-using static DataStructure.Leetcode.ReverseList;
 
 namespace DataStructure
 {
@@ -14,13 +11,16 @@ namespace DataStructure
     {
         static void Main(string[] args)
         {
-            int[] arr = {0,0,2,3,2,1,1,2,0,4};
-            arr.Skip(0).Take(10).ToArray();
+            //int[] arr = { 1, 1, 3, 3 ,5, 5};
             //QuickSort.Partition3(arr, 0, arr.Length - 1, new Random());
-            var objectK = new SelectK();
-            var ret = objectK.GetLeastNumbers(arr, 2);
+            //var objectK = new BinarySearch();
 
-            Console.WriteLine(string.Join(",", arr));
+            var obj = new ShipWithinDays();
+
+            int[] piles = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            obj.Day(piles, 15);
+
+            //Console.WriteLine(string.Join(",", arr));
 
             //ArrayTestHelper.SortTest("QuickSort", ref arr1);
             //ArrayTestHelper.SortTest("QuickSort1", ref arr1);
