@@ -2,6 +2,7 @@
 using DataStructure.Chapter2;
 using DataStructure.Leetcode;
 using DataStructure.Test;
+using DataStructure.Tree;
 using System;
 using System.Linq;
 
@@ -11,14 +12,31 @@ namespace DataStructure
     {
         static void Main(string[] args)
         {
+
             //int[] arr = { 1, 1, 3, 3 ,5, 5};
             //QuickSort.Partition3(arr, 0, arr.Length - 1, new Random());
             //var objectK = new BinarySearch();
 
-            var obj = new ShipWithinDays();
 
-            int[] piles = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-            obj.Day(piles, 15);
+            var bst = new BinarySearchTree();
+            int[] piles = { 41,22,58,15,33,50,63,13,37,42,43,53 };
+            foreach (var p in piles)
+            {
+                bst.Add(p);
+            }
+
+            bst.InOrder();
+
+            //bst.PreOrder();
+            //Console.WriteLine();
+
+            //bst.RemoveMin();
+
+            //bst.InOrder();
+            //Console.WriteLine();
+
+            //bst.PostOrder();
+            //Console.WriteLine();
 
             //Console.WriteLine(string.Join(",", arr));
 

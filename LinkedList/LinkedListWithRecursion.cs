@@ -157,6 +157,10 @@ namespace DataStructure.Chapter1.Week4
             {
                 return false;
             }
+            if (node.element.Equals(element))
+            {
+                return true;
+            }
             return Contains(node.next, element);
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DataStructure.Leetcode
@@ -10,12 +11,12 @@ namespace DataStructure.Leetcode
     /// 速度和时间具有单调性
     /// EatingTime() <=H 的最大time（对应最小速度）
     /// </summary>
-    public class MinEatingSpeed
+    class MinEatingSpeed
     {
         public int MinEatingSpeed_(int[] piles, int h)
         {
             int l = 1; 
-            int r = GetMax(piles);
+            int r = piles.Max();
             while (l < r)
             {
                 int mid = l + (r - l) / 2;
@@ -40,19 +41,6 @@ namespace DataStructure.Leetcode
                 h += Math.Ceiling(t);
             }
             return h;
-        }
-
-        private int GetMax(int[] piles)
-        {
-            int max = piles[0];
-            for (int i = 0; i < piles.Length; i++)
-            {
-                if (piles[i] > max)
-                {
-                    max = piles[i];
-                }
-            }
-            return max;
         }
     }
 }
