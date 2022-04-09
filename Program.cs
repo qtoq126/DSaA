@@ -19,16 +19,28 @@ namespace DataStructure
 
 
             var bst = new BinarySearchTree();
-            int[] piles = { 41,22,58,15,33,50,63,13,37,42,43,53 };
+            int[] piles = { 41, 22, 58, 15, 33, 50, 63, 13, 37, 42, 53 };
+            //int[] piles = { 13, 23, 10};
             foreach (var p in piles)
             {
                 bst.Add(p);
             }
 
-            bst.InOrder();
+            bst.Depth();
+
+            var ret = bst.Rank(58);
+            var e = bst.Select(58);
+            Console.WriteLine();
+
+            for (int i = 1; i < 12; i++)
+            {
+                Console.WriteLine($"{i} : {bst.Select(i)}");
+            }
+            Console.WriteLine();
+
+            //bst.InOrder();
 
             //bst.PreOrder();
-            //Console.WriteLine();
 
             //bst.RemoveMin();
 

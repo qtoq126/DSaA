@@ -11,11 +11,47 @@ namespace DataStructure.Tree
     /// </summary>
     public class BinarySearchTree
     {
-        private class Node
+        public class Node
         {
             public int e;
             public Node left;
             public Node right;
+
+            /// <summary>
+            /// 返回以node为根节点的树一共有多少个元素
+            /// </summary>
+            private int _nodeSize;
+            public int NodeSize
+            {
+                get
+                {
+                    _nodeSize = 0;
+                    return GetNodeSize(this);
+                }
+            }
+
+            private int GetNodeSize(Node node)
+            {
+                if (node == null)
+                {
+                    return 0;
+                }
+                else
+                {
+                    _nodeSize++;
+                }
+                GetNodeSize(node.left);
+                GetNodeSize(node.right);
+                return _nodeSize;
+            }
+
+            /// <summary>
+            /// 节点的深度
+            /// </summary>
+            public int Depth
+            {
+                get; set;
+            }
 
             public Node(int e)
             {
@@ -37,9 +73,6 @@ namespace DataStructure.Tree
         public int Size() => size;
 
         public bool IsEmpty() => size == 0;
-
-        int i = 0;
-
 
         /// <summary>
         /// 添加元素
@@ -257,8 +290,7 @@ namespace DataStructure.Tree
                 return;
             }
             InOrder(node.left);
-            i++;
-            Console.WriteLine(node.e + " " + i);
+            Console.WriteLine(node.e);
             InOrder(node.right);
         }
 
@@ -452,24 +484,118 @@ namespace DataStructure.Tree
             {
                 return Ceil(node.right, e);
             }
-
-            var tempNode = Ceil(node.left, e);
-            if (tempNode != null)
+            else
             {
-                return tempNode;
+                return Ceil(node.left, e);
             }
-            return node;
         }
 
-        //public int Rank(int target)
-        //{
-        //    return Rank(root, target);
-        //}
+        /// <summary>
+        /// 获取某个数的排位
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public int Rank(int key)
+        {
+            return Rank(root, key);
+        }
 
-        //private int Rank(Node node, int target)
-        //{
-            
-        //}
+        private int Rank(Node node, int key)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+
+            if (key < node.e)
+            {
+                return Rank(node.left, key);
+            }
+            else
+            {
+                if (node.left == null)
+                {
+                    return Rank(node.right, key) + 1;
+                }
+                return Rank(node.right, key) + node.left.NodeSize + 1;
+            }
+        }
+
+        /// <summary>
+        /// 获取排位为rank位的数
+        /// </summary>
+        public int Select(int rank)
+        {
+           return Select1(root, rank);
+        }
+
+        private int Select(Node node, int rank)
+        {
+            int e = -1;
+            while (node != null)
+            {
+                int rootRank = Rank(node.e);
+                if (rank < rootRank)
+                {
+                    node = node.left;
+                }
+                else if (rank > rootRank)
+                {
+                    node = node.right;
+                }
+                else
+                {
+                    e = node.e;
+                    break;
+                }
+                
+            }
+            return e;
+        }
+
+        private int Select1(Node node, int rank)
+        {
+            if (node == null)
+            {
+                return -1;
+            }
+            int curRank = Rank(node.e);
+            if (rank < curRank)
+            {
+                return Select1(node.left, rank);
+            }
+            else if (rank > curRank)
+            {
+                return Select1(node.right, rank);
+            }
+            else
+            {
+                return node.e;https://class.imooc.com/lesson/1584#mid=38098
+            }
+        }
+
+        /// <summary>
+        /// 返回节点的深度
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        public void Depth()
+        {
+            Depth(root, 0);
+        }
+
+        private void Depth(Node node, int d)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            node.Depth = d;
+            Depth(node.left, d + 1);
+            Depth(node.right, d + 1);
+        }
+
+       
 
         /// <summary>
         /// 最小元素
