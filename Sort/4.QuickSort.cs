@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataStructure.Chapter2.Week6
+namespace DataStructure.Sort
 {
     /// <summary>
     /// 快速排序法（随机算法，不用最坏复杂度O(n^2)来评估，使用[期望]（平均值）来分析复杂度）
@@ -13,6 +13,8 @@ namespace DataStructure.Chapter2.Week6
     /// </summary>
     public class QuickSort
     {
+        private QuickSort() { }
+
         public static void Sort<T>(T[] arr) where T : IComparable
         {
             QuickSort_(arr, 0, arr.Length - 1);
@@ -45,17 +47,17 @@ namespace DataStructure.Chapter2.Week6
 
             // 先去随机索引的值，将该值与数组首值互换，再进行遍历（优化有序数列为O(n^2)的情况）-> 解决问题一
             int randomIndex = r.Next(lhs, rhs + 1);
-            Swap(ref arr[j], ref arr[randomIndex]);
+            SortHelper.Swap(arr, j, randomIndex);
 
             for (int i = lhs + 1; i <= rhs; i++)
             {
                 if (arr[lhs].CompareTo(arr[i]) >= 0)
                 {
                     j++;
-                    Swap(ref arr[j], ref arr[i]);
+                    SortHelper.Swap(arr, j, i);
                 }
             }
-            Swap(ref arr[lhs], ref arr[j]);
+            SortHelper.Swap(arr, lhs, j);
             return j;
         }
 
@@ -74,7 +76,7 @@ namespace DataStructure.Chapter2.Week6
 
             // 先去随机索引的值，将该值与数组首值互换，再进行遍历（优化有序数列为O(n^2)的情况）-> 解决问题一
             int randomIndex = r.Next(lhs, rhs + 1);
-            Swap(ref arr[k], ref arr[randomIndex]);
+            SortHelper.Swap(arr, k, randomIndex);
 
             int i = k + 1;
             int j = rhs;
@@ -94,11 +96,11 @@ namespace DataStructure.Chapter2.Week6
                     break;
                 }
                 // arr[i]>=标定点且arr[j]<=标定点时互换，使其小的在前面，大的排到了后面
-                Swap(ref arr[i], ref arr[j]);
+                SortHelper.Swap(arr, i, j);
                 i++;
                 j--;
             }
-            Swap(ref arr[lhs], ref arr[j]); // 将首元素换到区间位
+            SortHelper.Swap(arr, lhs, j); // 将首元素换到区间位
             return k;
         }
 
@@ -116,7 +118,7 @@ namespace DataStructure.Chapter2.Week6
             int k = lhs; // 标定点索引
 
             int randomIndex = r.Next(lhs, rhs + 1);
-            Swap(ref arr[k], ref arr[randomIndex]);
+            SortHelper.Swap(arr, k, randomIndex);
 
             int lt = k;
             int gt = rhs + 1;
@@ -127,13 +129,13 @@ namespace DataStructure.Chapter2.Week6
                 if (arr[i].CompareTo(arr[k]) < 0)
                 {
                     lt++;
-                    Swap(ref arr[i], ref arr[lt]); // 与lt集合尾元素的后一位（=v的第一个位）互唤
+                    SortHelper.Swap(arr, i, lt); // 与lt集合尾元素的后一位（=v的第一个位）互唤
                     i++;
                 }
                 else if (arr[i].CompareTo(arr[k]) > 0)
                 {
                     gt--;
-                    Swap(ref arr[i], ref arr[gt]); // 与gt集合头元素的前一位（=v的最后一位）互换
+                    SortHelper.Swap(arr, i, gt); // 与gt集合头元素的前一位（=v的最后一位）互换
                 }
                 else
                 {
@@ -141,7 +143,7 @@ namespace DataStructure.Chapter2.Week6
                     i++;
                 }
             }
-            Swap(ref arr[lhs], ref arr[lt]);
+            SortHelper.Swap(arr, lhs, lt);
             return (lt, gt);
         }
 
@@ -167,13 +169,13 @@ namespace DataStructure.Chapter2.Week6
                 if (arr[i].CompareTo(arr[k]) < 0)
                 {
                     lt++;
-                    Swap(ref arr[i], ref arr[lt]); // 与lt集合尾元素的后一位（=v的第一个位）互唤
+                    SortHelper.Swap(arr, i, lt); // 与lt集合尾元素的后一位（=v的第一个位）互唤
                     i++;
                 }
                 else if (arr[i].CompareTo(arr[k]) > 0)
                 {
                     gt--;
-                    Swap(ref arr[i], ref arr[gt]); // 与gt集合头元素的前一位（=v的最后一位）互换
+                    SortHelper.Swap(arr, i, gt); // 与gt集合头元素的前一位（=v的最后一位）互换
                 }
                 else
                 {
@@ -181,7 +183,7 @@ namespace DataStructure.Chapter2.Week6
                     i++;
                 }
             }
-            Swap(ref arr[lhs], ref arr[lt]);
+            SortHelper.Swap(arr, lhs, lt);
             return (lt, gt);
         }
 
@@ -227,10 +229,10 @@ namespace DataStructure.Chapter2.Week6
             {
                 if (arr[retIndex].CompareTo(arr[i]) > 0)
                 {
-                    Swap(ref arr[retIndex], ref arr[i]);
+                    SortHelper.Swap(arr, retIndex, i);
                     if (flag)
                     {
-                        Swap(ref arr[retIndex + 1], ref arr[i]);
+                        SortHelper.Swap(arr, retIndex + 1, i);
                     }
                     retIndex++;
                 }
@@ -240,19 +242,6 @@ namespace DataStructure.Chapter2.Week6
                 }
             }
             return retIndex;
-        }
-
-        /// <summary>
-        /// 换位
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        private static void Swap<T>(ref T a, ref T b)
-        {
-            T t = a;
-            a = b;
-            b = t;
         }
     }
 }

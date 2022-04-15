@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataStructure.Chapter1.Week2
+namespace DataStructure.Sort
 {
     /// <summary>
     /// 选择排序法
@@ -12,6 +12,8 @@ namespace DataStructure.Chapter1.Week2
     /// </summary>
     public class SelectionSort
     {
+        private SelectionSort() { }
+
         public static void Sort<T>(T[] arr) where T: IComparable
         {
             int minIndex;
@@ -25,21 +27,8 @@ namespace DataStructure.Chapter1.Week2
                         minIndex = j;
                     }
                 }
-                Swap(ref arr[i], ref arr[minIndex]);
+                SortHelper.Swap(arr, i, minIndex);
             }
-        }
-
-        /// <summary>
-        /// 换位
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        private static void Swap<T>(ref T a, ref T b)
-        {
-            T t = a;
-            a = b;
-            b = t;
         }
     }
 }

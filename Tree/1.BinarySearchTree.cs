@@ -8,12 +8,15 @@ namespace DataStructure.Tree
     /// <summary>
     /// 二分搜索树BST
     /// 不包含重复元素的二分搜索树
+    /// 可以用于集合Set：SortSet(可去重)
+    /// O(h)：为树的高度 -> O(logn)
+    /// 最差为O(n)，跟链表相同，可用平衡二叉树解决该问题
     /// </summary>
-    public class BinarySearchTree
+    public class BinarySearchTree<T> where T : IComparable
     {
         public class Node
         {
-            public int e;
+            public T e;
             public Node left;
             public Node right;
 
@@ -53,7 +56,7 @@ namespace DataStructure.Tree
                 get; set;
             }
 
-            public Node(int e)
+            public Node(T e)
             {
                 this.e = e;
                 left = null;
@@ -70,14 +73,14 @@ namespace DataStructure.Tree
             size = 0;
         }
 
-        public int Size() => size;
+        public int GetSize() => size;
 
         public bool IsEmpty() => size == 0;
 
         /// <summary>
         /// 添加元素
         /// </summary>
-        public void Add(int e)
+        public void Add(T e)
         {
             root = Add(root, e);
         }
@@ -85,7 +88,7 @@ namespace DataStructure.Tree
         /// <summary>
         /// 返回插入新节点后树的根
         /// </summary>
-        private Node Add(Node node, int e)
+        private Node Add(Node node, T e)
         {
             if (node == null)
             {
@@ -105,7 +108,7 @@ namespace DataStructure.Tree
             return node;
         }
 
-        public void Add1(int e)
+        public void Add1(T e)
         {
             if (root == null)
             {
@@ -122,7 +125,7 @@ namespace DataStructure.Tree
         /// 以node为根的二分搜索树中插入元素e，递归算法
         /// 初级写法
         /// </summary>
-        private void Add1(Node node, int e)
+        private void Add1(Node node, T e)
         {
             if (e.Equals(node.e))
             {
@@ -153,7 +156,7 @@ namespace DataStructure.Tree
         /// <summary>
         /// 非递归写法
         /// </summary>
-        public void Add2(int e)
+        public void Add2(T e)
         {
             if (root == null)
             {
@@ -199,12 +202,12 @@ namespace DataStructure.Tree
         /// <summary>
         /// 查找
         /// </summary>
-        public bool Contains(int e)
+        public bool Contains(T e)
         {
             return Contains(root, e);
         }
 
-        private bool Contains(Node node, int e)
+        private bool Contains(Node node, T e)
         {
             if (node == null)
             {
@@ -226,6 +229,7 @@ namespace DataStructure.Tree
         }
 
         /// <summary>
+        /// 深度优先遍历
         /// 前序遍历
         /// 先访问该节点，再访问该节点的左子树，左子树遍历完了后再遍历右子树
         /// 深度优先遍历：一扎到底
@@ -274,6 +278,7 @@ namespace DataStructure.Tree
         }
 
         /// <summary>
+        /// 深度优先遍历
         /// 中序遍历 -> 排序后的结果
         /// 先访问该节点的左子树，再访问节点，最后访问节点的右子树
         /// 深度优先遍历
@@ -295,6 +300,7 @@ namespace DataStructure.Tree
         }
 
         /// <summary>
+        /// 深度优先遍历
         /// 后续遍历（内存释放）
         /// 先访问该节点的左子树，再访问该节点的右子树，最后访问该节点
         /// 深度优先遍历
@@ -344,7 +350,7 @@ namespace DataStructure.Tree
         /// <summary>
         /// 找到最小元素
         /// </summary>
-        public int GetMin()
+        public T GetMin()
         {
             if (size == 0)
             {
@@ -365,7 +371,7 @@ namespace DataStructure.Tree
         /// <summary>
         /// 找到最大元素
         /// </summary>
-        public int GetMax()
+        public T GetMax()
         {
             if (size == 0)
             {
@@ -386,7 +392,7 @@ namespace DataStructure.Tree
         /// <summary>
         /// 删除最小元素
         /// </summary>
-        public int RemoveMin()
+        public T RemoveMin()
         {
             var m = GetMin(); // 先找到最小值
             root = RemoveMin(root);
@@ -412,12 +418,12 @@ namespace DataStructure.Tree
         /// <summary>
         /// 删除元素为e的节点
         /// </summary>
-        public void Remove(int e)
+        public void Remove(T e)
         {
             root = Remove(root, e);
         }
 
-        private Node Remove(Node node, int e)
+        private Node Remove(Node node, T e)
         {
             if (node == null)
             {
@@ -464,23 +470,23 @@ namespace DataStructure.Tree
         /// <summary>
         /// 比e大的最小值
         /// </summary>
-        public int Ceil(int e)
+        public T Ceil(T e)
         {
             var ceilNode = Ceil(root, e);
             return ceilNode.e;
         }
 
-        private Node Ceil(Node node, int e)
+        private Node Ceil(Node node, T e)
         {
             if (node == null)
             {
                 return null;
             }
-            if (e == node.e)
+            if (e.Equals(node.e))
             {
                 return GetMin(node.right); // 找到以比e大的根节点的树的最小值
             }
-            else if (node.e < e)
+            else if (node.e.CompareTo(e) < 0)
             {
                 return Ceil(node.right, e);
             }
@@ -495,19 +501,19 @@ namespace DataStructure.Tree
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public int Rank(int key)
+        public int Rank(T key)
         {
             return Rank(root, key);
         }
 
-        private int Rank(Node node, int key)
+        private int Rank(Node node, T key)
         {
             if (node == null)
             {
                 return 0;
             }
 
-            if (key < node.e)
+            if (key.CompareTo(node.e) < 0)
             {
                 return Rank(node.left, key);
             }
@@ -524,14 +530,14 @@ namespace DataStructure.Tree
         /// <summary>
         /// 获取排位为rank位的数
         /// </summary>
-        public int Select(int rank)
+        public T Select(int rank)
         {
            return Select1(root, rank);
         }
 
-        private int Select(Node node, int rank)
+        private T Select(Node node, int rank)
         {
-            int e = -1;
+            T e = default;
             while (node != null)
             {
                 int rootRank = Rank(node.e);
@@ -553,11 +559,11 @@ namespace DataStructure.Tree
             return e;
         }
 
-        private int Select1(Node node, int rank)
+        private T Select1(Node node, int rank)
         {
             if (node == null)
             {
-                return -1;
+                return default;
             }
             int curRank = Rank(node.e);
             if (rank < curRank)
@@ -570,7 +576,7 @@ namespace DataStructure.Tree
             }
             else
             {
-                return node.e;https://class.imooc.com/lesson/1584#mid=38098
+                return node.e;
             }
         }
 
@@ -595,13 +601,11 @@ namespace DataStructure.Tree
             Depth(node.right, d + 1);
         }
 
-       
-
         /// <summary>
         /// 最小元素
         /// 非递归
         /// </summary>
-        public int Minimum1()
+        public T Minimum1()
         {
             if (size == 0)
             {

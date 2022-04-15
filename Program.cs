@@ -1,9 +1,9 @@
-﻿using DataStructure.Chapter1;
-using DataStructure.Chapter2;
-using DataStructure.Leetcode;
+﻿using DataStructure.Leetcode;
+using DataStructure.Sort;
 using DataStructure.Test;
 using DataStructure.Tree;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DataStructure
@@ -12,31 +12,41 @@ namespace DataStructure
     {
         static void Main(string[] args)
         {
-
-            //int[] arr = { 1, 1, 3, 3 ,5, 5};
+            //um.UniqueMorseRepresentations(new string[] { "qin", "zhen", "adidas", "nike", "shadow", "nike"});
+            var arr = ArrayTestHelper.GeneratorArray(100, 100);
+            BubbleSort.Sort(arr);
+            foreach (var e in arr)
+            {
+                Console.Write(e + ", ");
+            }
             //QuickSort.Partition3(arr, 0, arr.Length - 1, new Random());
             //var objectK = new BinarySearch();
 
+            //Swap(1, 3, data);
+            //foreach (var d in data)
+            //{
+            //    Console.WriteLine(d + " ");
+            //}
 
-            var bst = new BinarySearchTree();
-            int[] piles = { 41, 22, 58, 15, 33, 50, 63, 13, 37, 42, 53 };
-            //int[] piles = { 13, 23, 10};
-            foreach (var p in piles)
-            {
-                bst.Add(p);
-            }
+            //var bst = new BinarySearchTree();
+            //int[] piles = { 41, 22, 58, 15, 33, 50, 63, 13, 37, 42, 53 };
+            ////int[] piles = { 13, 23, 10};
+            //foreach (var p in piles)
+            //{
+            //    bst.Add(p);
+            //}
 
-            bst.Depth();
+            //bst.Depth();
 
-            var ret = bst.Rank(58);
-            var e = bst.Select(58);
-            Console.WriteLine();
+            //var ret = bst.Rank(58);
+            //var e = bst.Select(58);
+            //Console.WriteLine();
 
-            for (int i = 1; i < 12; i++)
-            {
-                Console.WriteLine($"{i} : {bst.Select(i)}");
-            }
-            Console.WriteLine();
+            //for (int i = 1; i < 12; i++)
+            //{
+            //    Console.WriteLine($"{i} : {bst.Select(i)}");
+            //}
+            //Console.WriteLine();
 
             //bst.InOrder();
 
@@ -98,6 +108,13 @@ namespace DataStructure
             // ArrayTestHelper.SortTest("InsertSort", arr1);
             //ArrayTestHelper.SortTest("MergeSort", arr1);
             //ArrayTestHelper.SortTest("MergeSortBU", arr2);
+        }
+
+        public static void Swap(int i, int j, List<int> data)
+        {
+            var t = data[i];
+            data[i] = data[j];
+            data[j] = t;
         }
 
         ////测试使用q运行opCount个进队和出队操作所需要的时间，单位：秒

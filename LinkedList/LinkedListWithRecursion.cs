@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataStructure.Chapter1.Week4
+namespace DataStructure.LinkedList
 {
     /// <summary>
     /// 采用递归的链表

@@ -1,13 +1,11 @@
-﻿using DataStructure.Chapter1.Week2;
-using DataStructure.Chapter2.Week5;
-using DataStructure.Chapter2.Week6;
+﻿using DataStructure.Sort;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataStructure.Test
+namespace DataStructure.Sort
 {
-    public class ArrayTestHelper
+    public class SortHelper
     {
         /// <summary>
         /// 生成随机数组
@@ -24,6 +22,16 @@ namespace DataStructure.Test
                 arr[i] = r.Next(maxValue);
             }
             return arr;
+        }
+
+        /// <summary>
+        /// 元素换位
+        /// </summary>
+        public static void Swap<T>(T[] arr, int i, int j)
+        {
+            var t = arr[i];
+            arr[i] = arr[j];
+            arr[j] = t;
         }
 
         /// <summary>
@@ -71,6 +79,10 @@ namespace DataStructure.Test
             else if (sortName == "QuickSort1")
             {
                 QuickSort.Sort1(arr);
+            }
+            else if (sortName == "HeapSort")
+            {
+                HeapSort.Sort(arr);
             }
 
             if (!IsSorted(arr))

@@ -1,8 +1,8 @@
-public interface IStack<E>
+public interface IStack<T>
 {
     int GetSize();
     bool IsEmpty();
-    void Push(E e);
-    E Pop();
-    E Peek();
+    void Push(T e);
+    T Pop();
+    T Peek();
 }

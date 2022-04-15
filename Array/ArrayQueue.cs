@@ -1,18 +1,18 @@
 using System.Text;
 
-namespace DataStructure
+namespace DataStructure.Array
 {
-    public class ArrayQueue<E>: iQueue<E> 
+    public class ArrayQueue<T>: iQueue<T> 
     {
-        Array<E> array;
+        BaseArray<T> array;
 
         public ArrayQueue(int capacity){
-            array = new Array<E>(capacity);
+            array = new BaseArray<T>(capacity);
         }
 
         public ArrayQueue()
         {
-            array = new Array<E>();
+            array = new BaseArray<T>();
         }
 
          public int GetSize()
@@ -24,15 +24,15 @@ namespace DataStructure
              return array.IsEmpty();
          }
 
-         public void Enqueue(E e){
+         public void Enqueue(T e){
              array.AddLast(e);
          }
 
-         public E Dequeue(){ //出队的时间复杂度为O(n)
+         public T Dequeue(){ //出队的时间复杂度为O(n)
              return array.RemoveFirst();
          }
 
-         public E GetFront(){
+         public T GetFront(){
              return array.GetFirst();
          }
 

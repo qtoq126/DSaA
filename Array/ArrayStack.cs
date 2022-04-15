@@ -1,19 +1,19 @@
 using System.Text;
 
-namespace DataStructure
+namespace DataStructure.Array
 {
-    public class ArrayStack<E>: IStack<E> 
+    public class ArrayStack<T>: IStack<T> 
     {
-        Array<E> array;
+        BaseArray<T> array;
 
         public ArrayStack(int capacity)
         {
-            array = new Array<E>(capacity);
+            array = new BaseArray<T>(capacity);
         }
 
         public ArrayStack()
         {
-            array = new Array<E>();
+            array = new BaseArray<T>();
         }
 
         public int GetSize()
@@ -31,15 +31,15 @@ namespace DataStructure
             return array.GetCapacity();
         }
 
-        public void Push(E e){
+        public void Push(T e){
             array.AddLast(e);
         }
 
-        public E Pop(){
+        public T Pop(){
             return array.RemoveLast();
         }
 
-        public E Peek(){
+        public T Peek(){
             return array.GetLast();
         }
 

@@ -1,22 +1,33 @@
 using System;
 using System.Text;
-namespace DataStructure
+
+namespace DataStructure.Array
 {
-    class Array<E>
+    class BaseArray<T>
     {
-        private E[] data;
+        private T[] data;
         private int size;
 
-        public Array(int capacity)
+        public BaseArray(int capacity)
         {
-            data = new E[capacity];
+            data = new T[capacity];
             size = 0;
         }
 
-        public Array()
+        public BaseArray()
         {
-            data = new E[10];
+            data = new T[10];
             size = 0;
+        }
+
+        public BaseArray(T[] arr)
+        {
+            data = new T[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                data[i] = arr[i];
+            }
+            size = arr.Length;
         }
 
         //获取数组中的元素个数
@@ -38,7 +49,7 @@ namespace DataStructure
         }
 
         //在第index个位置插入新的元素
-        public void Add(int index, E e)
+        public void Add(int index, T e)
         {
 
             if (index < 0 && index > size)
@@ -60,19 +71,19 @@ namespace DataStructure
             size++;
         }
 
-        public void AddLast(E e)
+        public void AddLast(T e)
         {
             Add(size, e);
         }
 
 
-        public void AddFirst(E e)
+        public void AddFirst(T e)
         {
             Add(0, e);
         }
 
         //获取index索引位置的元素
-        public E Get(int index)
+        public T Get(int index)
         {
             if (index < 0 && index >= size)
             {
@@ -82,16 +93,16 @@ namespace DataStructure
             return data[index];
         }
 
-        public E GetLast(){
+        public T GetLast(){
             return Get(size - 1);
         }
 
-        public E GetFirst(){
+        public T GetFirst(){
             return Get(0);
         }
 
         //修改index索引位置的元素e
-        public void Set(int index, E e)
+        public void Set(int index, T e)
         {
             if (index < 0 && index >= size)
             {
@@ -102,7 +113,7 @@ namespace DataStructure
         }
 
         //查找数组中是否有元素e
-        public bool Contains(E e)
+        public bool Contains(T e)
         {
             for (int i = 0; i < size; i++)
             {
@@ -115,7 +126,7 @@ namespace DataStructure
         }
 
         //查找数组中元素e所在的索引，如果不存在，则返回-1
-        public int Find(E e)
+        public int Find(T e)
         {
             for (int i = 0; i < size; i++)
             {
@@ -128,13 +139,13 @@ namespace DataStructure
         }
 
         //从数组中删除index位置的元素，返回删除的元素
-        public E Remove(int index)
+        public T Remove(int index)
         {
             if (index < 0 && index >= size)
             {
                 throw new IndexOutOfRangeException("Add failed. Require index >= 0");
             }
-            E removeE = data[index];
+            T removeE = data[index];
             for (int i = index + 1; i < size; i++)
             {
                 data[i - 1] = data[i];
@@ -148,18 +159,18 @@ namespace DataStructure
             return removeE;
         }
 
-        public E RemoveFirst()
+        public T RemoveFirst()
         {
             return Remove(0);
         }
 
-        public E RemoveLast()
+        public T RemoveLast()
         {
             return Remove(size - 1);
         }
 
         //从数组中删除元素e
-        public void RemoveElement(E e)
+        public void RemoveElement(T e)
         {
             int index = Find(e);
             if (index != -1)
@@ -188,12 +199,23 @@ namespace DataStructure
         //改变数组容积
         private void Resize(int newCapacity)
         {
-            E[] newData = new E[newCapacity];
+            T[] newData = new T[newCapacity];
             for (int i = 0; i < size; i++)
             {
                 newData[i] = data[i];
             }
             data = newData;
-        } 
+        }
+
+        public void Swap(int i, int j)
+        {
+            if (i < 0 || i >= size || j < 0 || j >= size)
+            {
+                throw new ArgumentOutOfRangeException("Index is illegal.");
+            }
+            var t = data[i];
+            data[i] = data[j];
+            data[j] = t;
+        }
     }
 }

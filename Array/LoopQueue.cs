@@ -2,16 +2,16 @@ using Microsoft.VisualBasic.CompilerServices;
 using System;
 using System.Text;
 
-namespace DataStructure
+namespace DataStructure.Array
 {
-    public class LoopQueue<E> : iQueue<E>
+    public class LoopQueue<T> : iQueue<T>
     {
-        private E[] data;
+        private T[] data;
         private int front, tail;
         private int size;
 
         public LoopQueue(int capacity){
-            data = new E[capacity + 1];
+            data = new T[capacity + 1];
             front = 0;
             tail = 0;
             size = 0;
@@ -19,7 +19,7 @@ namespace DataStructure
 
         public LoopQueue()
         {
-            data = new E[11];
+            data = new T[11];
         }
 
         public int GetCapacity()
@@ -36,7 +36,7 @@ namespace DataStructure
             return size;
         }
 
-        public void Enqueue(E e)
+        public void Enqueue(T e)
         {
             if ((tail + 1) % data.Length == front)
             {
@@ -47,12 +47,12 @@ namespace DataStructure
             size ++;
         }
 
-        public E Dequeue() {
+        public T Dequeue() {
             if (IsEmpty())
             {
                 throw new ArgumentOutOfRangeException("Empty Queue");
             }
-            E ret = data[front];
+            T ret = data[front];
             front = (front + 1) % data.Length;
             size --;
             if (size == GetCapacity() / 4 && GetCapacity() / 2 != 0)
@@ -63,7 +63,7 @@ namespace DataStructure
         }
 
         private void Resize(int newCapacity){
-            E[] newData = new E[newCapacity + 1];
+            T[] newData = new T[newCapacity + 1];
             for (int i = 0; i < size; i++)
             {
                 newData[i] = data[(i + front) % data.Length];
@@ -73,7 +73,7 @@ namespace DataStructure
             tail = size;
         }
 
-        public E GetFront()
+        public T GetFront()
         {
             if (IsEmpty())
             {

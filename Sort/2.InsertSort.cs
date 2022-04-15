@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataStructure.Chapter1.Week2
+namespace DataStructure.Sort
 {
     /// <summary>
     /// 插入排序法
@@ -14,6 +14,8 @@ namespace DataStructure.Chapter1.Week2
     /// </summary>
     public class InsertSort
     {
+        private InsertSort() { }
+
         public static void Sort<T>(T[] arr) where T : IComparable
         {
             for (int i = 0; i < arr.Length; i++)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataStructure.Chapter2
+namespace DataStructure.Sort
 {
     /// <summary>
     /// 二分查找法
@@ -12,6 +12,8 @@ namespace DataStructure.Chapter2
     /// </summary>
     public class BinarySearch
     {
+        private BinarySearch() { }
+
         public bool Search<T>(T[] arr, T target) where T : IComparable
         {
             return SearchR(arr, 0, arr.Length - 1, target);

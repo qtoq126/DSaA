@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataStructure.Chapter2.Week5
+namespace DataStructure.Sort
 {
     /// <summary>
     /// 归并排序法
@@ -17,6 +17,8 @@ namespace DataStructure.Chapter2.Week5
     /// </summary>
     public class MergeSort
     {
+        private MergeSort() { }
+
         private static int res = 0;
 
         /// <summary>

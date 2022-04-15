@@ -1,8 +1,8 @@
-public interface iQueue<E>
+public interface iQueue<T>
 {
     int GetSize();
     bool IsEmpty();
-    void Enqueue(E e);
-    E Dequeue();
-    E GetFront();
+    void Enqueue(T e);
+    T Dequeue();
+    T GetFront();
 }
